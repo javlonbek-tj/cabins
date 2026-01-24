@@ -1,0 +1,26 @@
+import React from 'react';
+import styled from 'styled-components';
+
+const StyledButtonIcon = styled.button`
+  background: none;
+  border: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--border-radius-sm);
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: var(--color-grey-100);
+  }
+
+  & svg {
+    width: 2.2rem;
+    height: 2.2rem;
+    color: var(--color-brand-600);
+  }
+`;
+
+const ButtonIcon = ({ children }) => {
+  return <StyledButtonIcon>{children}</StyledButtonIcon>;
+};
+
+export default ButtonIcon;
