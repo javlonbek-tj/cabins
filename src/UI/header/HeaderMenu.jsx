@@ -1,7 +1,7 @@
 import React from 'react';
 import { CiDark, CiUser } from 'react-icons/ci';
 import styled from 'styled-components';
-import ButtonIcon from './ButtonIcon';
+import ButtonIcon from '../shared/ButtonIcon';
 
 const StyledHeaderMenu = styled.ul`
   display: flex;

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Logo from './Logo';
+import NavMenu from './NavMenu';
 
 const StyledSidebar = styled.aside`
   grid-row: 1/-1;
@@ -16,7 +17,7 @@ const Sidebar = () => {
   return (
     <StyledSidebar>
       <Logo />
-      <Nav></Nav>
+      <NavMenu />
     </StyledSidebar>
   );
 };
