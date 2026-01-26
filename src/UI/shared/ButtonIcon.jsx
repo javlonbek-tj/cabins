@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledButtonIcon = styled.button`
+const ButtonIcon = styled.button`
   background: none;
   border: none;
   padding: 0.4rem 0.6rem;
@@ -18,9 +18,5 @@ const StyledButtonIcon = styled.button`
     color: var(--color-brand-600);
   }
 `;
-
-const ButtonIcon = ({ children }) => {
-  return <StyledButtonIcon>{children}</StyledButtonIcon>;
-};
 
 export default ButtonIcon;
