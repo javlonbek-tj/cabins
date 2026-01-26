@@ -32,17 +32,17 @@ const GlobalStyles = createGlobalStyle`
   --color-red-700: #b91c1c;
   --color-red-800: #991b1b;
 
-  --backdrop-color: rgba(255, 255, 255, 0.1);
+  --backdrop-color: rgba(0, 0, 0, 0.55);
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.12);
-  
 
-    --image-grayscale: 0;
+
+  --image-grayscale: 0;
   --image-opacity: 100%;
   }
-  
+
   &.dark-mode {
 --color-grey-0: #18212f;
 --color-grey-50: #111827;
@@ -80,7 +80,7 @@ const GlobalStyles = createGlobalStyle`
 --image-grayscale: 10%;
 --image-opacity: 90%;
   }
-  
+
   /* Indigo */
   --color-brand-50: #eef2ff;
   --color-brand-100: #e0e7ff;
@@ -90,11 +90,14 @@ const GlobalStyles = createGlobalStyle`
   --color-brand-700: #4338ca;
   --color-brand-800: #3730a3;
   --color-brand-900: #312e81;
-  
+
   --border-radius-tiny: 3px;
   --border-radius-sm: 5px;
   --border-radius-md: 7px;
   --border-radius-lg: 9px;
+  --z-index-toast: 100;
+  --z-index-modal: 95;
+  --z-index-overlay: 90;
 
 
 }
@@ -118,7 +121,8 @@ body {
 
 input,
 select,
-textarea {
+textarea,
+button {
   font: inherit;
   color: inherit;
 }

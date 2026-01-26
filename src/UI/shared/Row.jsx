@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledRow = styled.div.attrs((props) => ({
+const Row = styled.div.attrs((props) => ({
   direction: props.direction || 'horizontal',
 }))`
   display: flex;
@@ -20,9 +20,5 @@ const StyledRow = styled.div.attrs((props) => ({
       gap: 1.6rem;
     `}
 `;
-
-const Row = ({ children, direction }) => {
-  return <StyledRow direction={direction}>{children}</StyledRow>;
-};
 
 export default Row;

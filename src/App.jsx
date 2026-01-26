@@ -4,6 +4,7 @@ import AppLayout from './UI/AppLayout';
 import Cabins from './pages/Cabins';
 import Dashboard from './pages/Dashboard';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Toaster } from 'react-hot-toast';
 
 const queryClient = new QueryClient();
 
@@ -14,12 +15,34 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to="dashboard" />} />
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="cabins" element={<Cabins />} />
+            <Route index element={<Navigate replace to='dashboard' />} />
+            <Route path='dashboard' element={<Dashboard />} />
+            <Route path='cabins' element={<Cabins />} />
           </Route>
         </Routes>
       </BrowserRouter>
+      <Toaster
+        position='top-center'
+        gutter={8}
+        containerStyle={{
+          zIndex: 'var(--z-index-toast)',
+        }}
+        toastOptions={{
+          success: {
+            duration: 3000,
+          },
+          error: {
+            duration: 5000,
+          },
+          style: {
+            fontSize: '1.6rem',
+            maxWidth: '50rem',
+            padding: '1.6rem 2.4rem',
+            backgroundColor: 'var(--color-grey-0)',
+            color: 'var(--color-grey-700)',
+          },
+        }}
+      />
     </QueryClientProvider>
   );
 }

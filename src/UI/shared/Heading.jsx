@@ -10,16 +10,12 @@ const sizes = {
   h6: '1.3rem',
 };
 
-const StyledHeading = styled.h1.attrs((props) => ({
+const Heading = styled.h1.attrs((props) => ({
   as: props.as || 'h1',
 }))`
   font-size: ${({ as }) => sizes[as]};
   font-weight: 600;
   line-height: 1.4;
 `;
-
-const Heading = ({ as = 'h1', children }) => {
-  return <StyledHeading as={as}>{children}</StyledHeading>;
-};
 
 export default Heading;

@@ -1,4 +1,3 @@
-import React from 'react';
 import { IoMdAdd } from 'react-icons/io';
 import { MdDelete, MdEdit } from 'react-icons/md';
 import styled from 'styled-components';
@@ -46,20 +45,22 @@ const ActionButtons = styled.div`
   }
 `;
 
-const CabinRow = ({ cabin }) => {
+const CabinRow = ({ cabin, onDelete }) => {
   return (
-    <StyledCabinRow>
-      <Img src={cabin.image} />
-      <div>{cabin.name}</div>
-      <div>{cabin.maxCapacity}</div>
-      <div>{cabin.regularPrice}</div>
-      <div>{cabin.discount}</div>
-      <ActionButtons>
-        <IoMdAdd />
-        <MdEdit />
-        <MdDelete />
-      </ActionButtons>
-    </StyledCabinRow>
+    <>
+      <StyledCabinRow>
+        <Img src={cabin.image} />
+        <div>{cabin.name}</div>
+        <div>{cabin.maxCapacity}</div>
+        <div>{cabin.regularPrice}</div>
+        <div>{cabin.discount}</div>
+        <ActionButtons>
+          <IoMdAdd />
+          <MdEdit />
+          <MdDelete onClick={onDelete} />
+        </ActionButtons>
+      </StyledCabinRow>
+    </>
   );
 };
 

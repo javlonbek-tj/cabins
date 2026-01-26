@@ -58,6 +58,11 @@ const Button = styled.button.attrs((props) => ({
 
   ${(props) => sizes[props.size]}
   ${(props) => variations[props.variation]}
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
 `;
 
 export default Button;

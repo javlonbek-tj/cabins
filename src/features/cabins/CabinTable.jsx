@@ -1,9 +1,11 @@
-import React from 'react';
 import styled from 'styled-components';
 import useCabins from './useCabins';
 import CabinRow from './CabinRow';
 import { FullPageSpinner } from '../../UI/shared/Spinner';
-
+import { useState } from 'react';
+import Modal from '../../UI/shared/Modal';
+import ConfirmDelete from '../../UI/shared/ConfirmDelete';
+import useDeleteCabin from './useDeleteCabin';
 const Table = styled.div`
   border: 1px solid var(--color-grey-200);
   border-radius: var(--border-radius-md);
@@ -24,25 +26,45 @@ const TableHead = styled.div`
 `;
 
 const CabinTable = () => {
-  const { cabins, error, isPending } = useCabins();
+  const { cabins, error, isPending: isLoadingCabins } = useCabins();
+  const [selectedCabin, setSelectedCabin] = useState(null);
+  const { deleteCabin, isPending: isDeleting } = useDeleteCabin(() =>
+    setSelectedCabin(null),
+  );
 
-  if (isPending) return <FullPageSpinner />;
+  if (isLoadingCabins) return <FullPageSpinner />;
   if (error) return <div>{error.message}</div>;
   return (
-    <Table role="table">
-      <TableHead role="header">
-        <div></div>
-        <div>Cabin</div>
-        <div>Capacity</div>
-        <div>Price</div>
-        <div>Discount</div>
-        <div></div>
-      </TableHead>
+    <>
+      <Table role='table'>
+        <TableHead role='header'>
+          <div></div>
+          <div>Cabin</div>
+          <div>Capacity</div>
+          <div>Price</div>
+          <div>Discount</div>
+          <div></div>
+        </TableHead>
 
-      {cabins.map((cabin) => (
-        <CabinRow key={cabin.id} cabin={cabin} />
-      ))}
-    </Table>
+        {cabins.map((cabin) => (
+          <CabinRow
+            key={cabin.id}
+            cabin={cabin}
+            onDelete={() => setSelectedCabin(cabin)}
+          />
+        ))}
+      </Table>
+      <Modal open={!!selectedCabin} closeModal={() => setSelectedCabin(null)}>
+        {selectedCabin && (
+          <ConfirmDelete
+            resourceName={`Cabin ${selectedCabin.name}`}
+            closeModal={() => setSelectedCabin(null)}
+            onDelete={() => deleteCabin(selectedCabin.id)}
+            isPending={isDeleting}
+          />
+        )}
+      </Modal>
+    </>
   );
 };
 
