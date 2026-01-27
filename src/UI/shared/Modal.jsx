@@ -16,11 +16,11 @@ const fadeIn = keyframes`
 
 const growIn = keyframes`
   from {
-    opacity: 0;
+
     transform: translate(-50%, -50%) scale(0);
   }
   to {
-    opacity: 1;
+
     transform: translate(-50%, -50%) scale(1);
   }
 `;
@@ -29,7 +29,7 @@ const Overlay = styled.div`
   position: fixed;
   inset: 0;
   background: var(--backdrop-color);
-  animation: ${fadeIn} 0.2s ease-out forwards;
+  animation: ${fadeIn} 0.25s ease-out forwards;
   z-index: var(--z-index-overlay);
 `;
 
@@ -40,13 +40,11 @@ const StyledDialog = styled.dialog`
   transform: translate(-50%, -50%) scale(1);
   transform-origin: center;
 
-  width: 80%;
-  max-width: 40rem;
-
   background-color: var(--color-grey-0);
   border-radius: var(--border-radius-md);
   border: none;
   box-shadow: var(--shadow-md);
+  max-width: 90vw;
 
   animation: ${growIn} 0.2s ease-out forwards;
   z-index: var(--z-index-modal);
@@ -96,7 +94,7 @@ const Modal = ({ open, children, closeModal }) => {
         {children}
       </StyledDialog>
     </>,
-    document.getElementById('modal'),
+    document.getElementById('modal')
   );
 };
 

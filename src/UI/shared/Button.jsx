@@ -48,16 +48,14 @@ const variations = {
   `,
 };
 
-const Button = styled.button.attrs((props) => ({
-  size: props.size || 'medium',
-  variation: props.variation || 'primary',
-}))`
+const Button = styled.button`
   border: none;
   border-radius: var(--border-radius-sm);
   box-shadow: var(--shadow-sm);
+  transition: all 0.3s;
 
-  ${(props) => sizes[props.size]}
-  ${(props) => variations[props.variation]}
+  ${({ size = 'medium' }) => sizes[size]}
+  ${({ variation = 'primary' }) => variations[variation]}
 
   &:disabled {
     opacity: 0.6;

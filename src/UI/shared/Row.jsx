@@ -1,20 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Row = styled.div.attrs((props) => ({
-  direction: props.direction || 'horizontal',
-}))`
+const Row = styled.div`
   display: flex;
 
-  ${(props) =>
-    props.direction === 'horizontal' &&
+  ${({ direction = 'horizontal' }) =>
+    direction === 'horizontal' &&
     `
       justify-content: space-between;
       align-items: center;
     `}
 
-  ${(props) =>
-    props.direction === 'vertical' &&
+  ${({ direction = 'horizontal' }) =>
+    direction === 'vertical' &&
     `
       flex-direction: column;
       gap: 1.6rem;

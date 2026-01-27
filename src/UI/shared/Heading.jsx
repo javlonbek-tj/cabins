@@ -10,9 +10,7 @@ const sizes = {
   h6: '1.3rem',
 };
 
-const Heading = styled.h1.attrs((props) => ({
-  as: props.as || 'h1',
-}))`
+const Heading = styled.h1`
   font-size: ${({ as }) => sizes[as]};
   font-weight: 600;
   line-height: 1.4;
