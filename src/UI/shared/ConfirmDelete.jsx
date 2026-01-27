@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import Heading from './Heading';
-import ButtonGroup from './ButtonGroup';
-import Button from './Button';
 import { InlineSpinner } from './Spinner';
+import { Button, ButtonGroup } from './button';
+import { Heading } from './Heading';
 
 const StyledConfirmDelete = styled.div`
   display: flex;
@@ -25,20 +24,25 @@ const DeleteButton = styled(Button)`
   align-items: center;
 `;
 
-const ConfirmDelete = ({ resourceName, closeModal, isPending, onDelete }) => {
+export const ConfirmDelete = ({
+  resourceName,
+  closeModal,
+  isPending,
+  onDelete,
+}) => {
   return (
     <StyledConfirmDelete>
-      <Heading as="h2">Delete {resourceName}?</Heading>
+      <Heading as='h2'>Delete {resourceName}?</Heading>
       <p>
         Are you sure you want to delete {resourceName} permanently? <br />
         This action cannot be undone.
       </p>
       <ButtonGroup>
-        <Button variation="secondary" onClick={closeModal} disabled={isPending}>
+        <Button variation='secondary' onClick={closeModal} disabled={isPending}>
           Cancel
         </Button>
         <DeleteButton
-          variation="danger"
+          variation='danger'
           disabled={isPending}
           onClick={onDelete}
         >
@@ -48,5 +52,3 @@ const ConfirmDelete = ({ resourceName, closeModal, isPending, onDelete }) => {
     </StyledConfirmDelete>
   );
 };
-
-export default ConfirmDelete;

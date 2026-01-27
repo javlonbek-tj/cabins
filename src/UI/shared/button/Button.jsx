@@ -48,11 +48,11 @@ const variations = {
   `,
 };
 
-const Button = styled.button`
+export const Button = styled.button`
   border: none;
   border-radius: var(--border-radius-sm);
   box-shadow: var(--shadow-sm);
-  transition: all 0.3s;
+  transition: background-color 0.3s;
 
   ${({ size = 'medium' }) => sizes[size]}
   ${({ variation = 'primary' }) => variations[variation]}
@@ -62,5 +62,3 @@ const Button = styled.button`
     cursor: default;
   }
 `;
-
-export default Button;

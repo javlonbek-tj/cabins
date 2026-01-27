@@ -1,9 +1,9 @@
 import { createPortal } from 'react-dom';
 import { useEffect, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
-import ButtonIcon from './ButtonIcon';
 import { IoMdClose } from 'react-icons/io';
 import useKey from '../../hooks/useKey';
+import { ButtonIcon } from './button';
 
 const fadeIn = keyframes`
   from {
@@ -29,7 +29,7 @@ const Overlay = styled.div`
   position: fixed;
   inset: 0;
   background: var(--backdrop-color);
-  animation: ${fadeIn} 0.25s ease-out forwards;
+  animation: ${fadeIn} 0.3s ease-out forwards;
   z-index: var(--z-index-overlay);
 `;
 
@@ -46,7 +46,7 @@ const StyledDialog = styled.dialog`
   box-shadow: var(--shadow-md);
   max-width: 90vw;
 
-  animation: ${growIn} 0.2s ease-out forwards;
+  animation: ${growIn} 0.25s ease-out forwards;
   z-index: var(--z-index-modal);
 
   &::backdrop {
@@ -65,7 +65,7 @@ const CloseButton = styled(ButtonIcon)`
   }
 `;
 
-const Modal = ({ open, children, closeModal }) => {
+export const Modal = ({ open, children, closeModal }) => {
   const dialog = useRef(null);
 
   useEffect(() => {
@@ -94,8 +94,6 @@ const Modal = ({ open, children, closeModal }) => {
         {children}
       </StyledDialog>
     </>,
-    document.getElementById('modal')
+    document.getElementById('modal'),
   );
 };
-
-export default Modal;

@@ -80,7 +80,7 @@ const NavMenu = () => {
     <nav>
       <NavList>
         {navLinks.map((link) => (
-          <li>
+          <li key={link.label}>
             <StyledNavLink to={link.path}>
               {link.icon}
               <span>{link.label}</span>

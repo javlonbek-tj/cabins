@@ -116,6 +116,7 @@ html {
 body {
   font-family: 'Poppins', sans-serif;
   font-size: 1.6rem;
+  color: var(--color-grey-700);
   min-height: 100vh;
 }
 
@@ -127,10 +128,16 @@ button {
   color: inherit;
 }
 
-input:focus,
-button:focus,
-textarea:focus,
-select:focus {
+select:disabled,
+input:disabled {
+  background-color: var(--color-grey-200);
+  color: var(--color-grey-500);
+}
+
+input:focus-visible,
+button:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
   outline: 2px solid var(--color-brand-600);
   outline-offset: -1px;
 }

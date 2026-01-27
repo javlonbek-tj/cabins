@@ -1,12 +1,10 @@
+import { useState } from 'react';
 import styled from 'styled-components';
-import useCabins from './useCabins';
 import CabinRow from './CabinRow';
 import { FullPageSpinner } from '../../UI/shared/Spinner';
-import { useState } from 'react';
-import Modal from '../../UI/shared/Modal';
-import ConfirmDelete from '../../UI/shared/ConfirmDelete';
 import useDeleteCabin from './useDeleteCabin';
-import Button from '../../UI/shared/Button';
+import { ConfirmDelete, Modal } from '../../UI/shared';
+
 const Table = styled.div`
   border: 1px solid var(--color-grey-200);
   border-radius: var(--border-radius-md);
@@ -26,19 +24,18 @@ const TableHead = styled.div`
   font-weight: 600;
 `;
 
-const CabinTable = () => {
-  const { cabins, error, isPending: isLoadingCabins } = useCabins();
+const CabinTable = ({ cabins, isLoadingCabins, error }) => {
   const [selectedCabin, setSelectedCabin] = useState(null);
   const { deleteCabin, isPending: isDeleting } = useDeleteCabin(() =>
-    setSelectedCabin(null)
+    setSelectedCabin(null),
   );
 
   if (isLoadingCabins) return <FullPageSpinner />;
   if (error) return <div>{error.message}</div>;
   return (
     <>
-      <Table role="table">
-        <TableHead role="header">
+      <Table role='table'>
+        <TableHead role='header'>
           <div></div>
           <div>Cabin</div>
           <div>Capacity</div>

@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const Row = styled.div`
+export const Row = styled.div`
   display: flex;
 
   ${({ direction = 'horizontal' }) =>
@@ -18,5 +17,3 @@ const Row = styled.div`
       gap: 1.6rem;
     `}
 `;
-
-export default Row;

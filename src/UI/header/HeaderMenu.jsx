@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import ButtonIcon from '../shared/ButtonIcon';
 import { HiOutlineUser } from 'react-icons/hi';
 import { MdOutlineDarkMode } from 'react-icons/md';
+import { ButtonIcon } from '../shared';
 
 const StyledHeaderMenu = styled.ul`
   display: flex;

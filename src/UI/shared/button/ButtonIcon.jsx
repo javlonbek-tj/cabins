@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const ButtonIcon = styled.button`
+export const ButtonIcon = styled.button`
   background: none;
   border: none;
   padding: 0.6rem;
@@ -18,5 +18,3 @@ const ButtonIcon = styled.button`
     display: block;
   }
 `;
-
-export default ButtonIcon;
