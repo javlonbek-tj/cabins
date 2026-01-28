@@ -57,16 +57,16 @@ export const ImagePicker = ({
   label,
   id,
   onChange,
-  value,
   disabled,
   error,
+  defaultImage,
 }) => {
-  const [selectedImage, setSelectedImage] = useState(value || null);
+  const [selectedImage, setSelectedImage] = useState(defaultImage || null);
   const [isLoading, setIsLoading] = useState(false);
   const imageInput = useRef();
 
   const handleUpload = () => {
-    imageInput.current.click();
+    imageInput.current?.click();
   };
 
   const handleImageChange = (e) => {
@@ -92,7 +92,7 @@ export const ImagePicker = ({
 
   const handleRemoveImage = () => {
     setSelectedImage(null);
-    imageInput.current.value = null;
+    imageInput.current.value = '';
     onChange?.(null);
   };
   return (

@@ -1,5 +1,4 @@
 import { Controller, useForm } from 'react-hook-form';
-import { useCreateCabin } from './useCreateCabin';
 import {
   Button,
   ButtonGroup,
@@ -10,20 +9,27 @@ import {
   Textarea,
 } from '../../UI/shared';
 
-const CreateCabinForm = ({ closeModal }) => {
-  const { register, handleSubmit, getValues, formState, control } = useForm();
-  const { createCabin, isPending } = useCreateCabin(closeModal);
+export const CabinForm = ({
+  closeModal,
+  onSubmit,
+  defaultValues = {},
+  submitLabel,
+  isPending,
+  ModalTitle,
+}) => {
+  const { register, handleSubmit, getValues, formState, control } = useForm({
+    defaultValues,
+  });
   const { errors } = formState;
-  const onSubmit = (data) => {
-    createCabin(data);
-  };
+
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Heading as='h2'>Create new cabin</Heading>
+      <Heading as='h2'>{ModalTitle}</Heading>
       <Input
         label='Cabin name'
         id='name'
         disabled={isPending}
+        defaultValue={defaultValues.name}
         {...register('name', {
           required: 'This field is required',
         })}
@@ -35,6 +41,7 @@ const CreateCabinForm = ({ closeModal }) => {
         type='number'
         inputMode='numeric'
         disabled={isPending}
+        defaultValue={defaultValues.maxCapacity}
         {...register('maxCapacity', {
           required: 'This field is required',
           min: {
@@ -49,6 +56,7 @@ const CreateCabinForm = ({ closeModal }) => {
         id='regularPrice'
         type='number'
         inputMode='numeric'
+        defaultValue={defaultValues.regularPrice}
         disabled={isPending}
         {...register('regularPrice', {
           required: 'This field is required',
@@ -63,7 +71,7 @@ const CreateCabinForm = ({ closeModal }) => {
         label='Discount'
         id='discount'
         type='number'
-        defaultValue={0}
+        defaultValue={defaultValues.discount || 0}
         inputMode='numeric'
         disabled={isPending}
         {...register('discount', {
@@ -78,6 +86,7 @@ const CreateCabinForm = ({ closeModal }) => {
       <Textarea
         label='Description'
         id='description'
+        defaultValue={defaultValues.description}
         disabled={isPending}
         {...register('description', {
           required: 'This field is required',
@@ -85,20 +94,20 @@ const CreateCabinForm = ({ closeModal }) => {
         error={errors.description?.message}
       />
       <Controller
-        name='cabinImage'
+        name='image'
         control={control}
         rules={{
-          required: 'This field is required',
+          required: !defaultValues.image && 'This field is required',
         }}
         render={({ field }) => {
           return (
             <ImagePicker
               label='Cabin photo'
-              id='cabinImage'
+              id='image'
               disabled={isPending}
               onChange={field.onChange}
-              value={field.value}
-              error={errors.cabinImage?.message}
+              defaultImage={defaultValues.image}
+              error={errors.image?.message}
             />
           );
         }}
@@ -111,10 +120,8 @@ const CreateCabinForm = ({ closeModal }) => {
         >
           Cancel
         </Button>
-        <Button disabled={isPending}>Create new cabin</Button>
+        <Button disabled={isPending}>{submitLabel}</Button>
       </ButtonGroup>
     </Form>
   );
 };
-
-export default CreateCabinForm;

@@ -1,6 +1,8 @@
-import { IoMdAdd } from 'react-icons/io';
-import { MdDelete, MdEdit } from 'react-icons/md';
+import { useState } from 'react';
 import styled from 'styled-components';
+import { DeleteCabin, EditCabin, useCreateCabin, useDuplicateCabin } from '.';
+import { HiPencil, HiTrash } from 'react-icons/hi';
+import { HiSquare2Stack } from 'react-icons/hi2';
 
 const StyledCabinRow = styled.div`
   display: grid;
@@ -28,24 +30,27 @@ const ActionButtons = styled.div`
   gap: 0.8rem;
 
   & svg {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     cursor: pointer;
+    color: var(--color-grey-500);
   }
 
-  & svg:first-child {
-    color: var(--color-green-700);
-  }
-
-  & svg:nth-child(2) {
-    color: var(--color-brand-700);
-  }
-
-  & svg:last-child {
-    color: var(--color-red-700);
+  &:disabled {
+    svg {
+      opacity: 0.6;
+      cursor: default;
+    }
   }
 `;
 
-const CabinRow = ({ cabin, onDelete }) => {
+export const CabinRow = ({ cabin }) => {
+  const [cabinToEdit, setCabinToEdit] = useState(null);
+  const [cabinToDelete, setCabinToDelete] = useState(null);
+  const { duplicateCabin, isPending } = useDuplicateCabin();
+
+  const handleDuplicate = (cabin) => {
+    duplicateCabin({ ...cabin, name: `Copy of ${cabin.name}` });
+  };
   return (
     <>
       <StyledCabinRow>
@@ -54,14 +59,18 @@ const CabinRow = ({ cabin, onDelete }) => {
         <div>{cabin.maxCapacity}</div>
         <div>{cabin.regularPrice}</div>
         <div>{cabin.discount}</div>
-        <ActionButtons>
-          <IoMdAdd />
-          <MdEdit />
-          <MdDelete onClick={onDelete} />
+        <ActionButtons disabled={isPending}>
+          <HiSquare2Stack onClick={() => handleDuplicate(cabin)} />
+          <HiPencil onClick={() => setCabinToEdit(cabin)} />
+          <HiTrash onClick={() => setCabinToDelete(cabin)} />
         </ActionButtons>
       </StyledCabinRow>
+      <EditCabin cabin={cabinToEdit} onClose={() => setCabinToEdit(null)} />
+
+      <DeleteCabin
+        cabin={cabinToDelete}
+        onClose={() => setCabinToDelete(null)}
+      />
     </>
   );
 };
-
-export default CabinRow;

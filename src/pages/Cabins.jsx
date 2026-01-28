@@ -1,6 +1,4 @@
-import CabinTable from '../features/cabins/CabinTable';
-import AddCabin from '../features/cabins/AddCabin';
-import useCabins from '../features/cabins/useCabins';
+import { AddCabin, CabinTable, useCabins } from '../features/cabins';
 import { Heading, Row } from '../UI/shared';
 
 const Cabins = () => {

@@ -1,9 +1,6 @@
-import { useState } from 'react';
 import styled from 'styled-components';
-import CabinRow from './CabinRow';
-import { FullPageSpinner } from '../../UI/shared/Spinner';
-import useDeleteCabin from './useDeleteCabin';
-import { ConfirmDelete, Modal } from '../../UI/shared';
+import { CabinRow } from './index';
+import { FullPageSpinner } from '../../UI/shared';
 
 const Table = styled.div`
   border: 1px solid var(--color-grey-200);
@@ -24,12 +21,7 @@ const TableHead = styled.div`
   font-weight: 600;
 `;
 
-const CabinTable = ({ cabins, isLoadingCabins, error }) => {
-  const [selectedCabin, setSelectedCabin] = useState(null);
-  const { deleteCabin, isPending: isDeleting } = useDeleteCabin(() =>
-    setSelectedCabin(null),
-  );
-
+export const CabinTable = ({ cabins, isLoadingCabins, error }) => {
   if (isLoadingCabins) return <FullPageSpinner />;
   if (error) return <div>{error.message}</div>;
   return (
@@ -45,25 +37,9 @@ const CabinTable = ({ cabins, isLoadingCabins, error }) => {
         </TableHead>
 
         {cabins.map((cabin) => (
-          <CabinRow
-            key={cabin.id}
-            cabin={cabin}
-            onDelete={() => setSelectedCabin(cabin)}
-          />
+          <CabinRow key={cabin.id} cabin={cabin} />
         ))}
       </Table>
-      <Modal open={!!selectedCabin} closeModal={() => setSelectedCabin(null)}>
-        {selectedCabin && (
-          <ConfirmDelete
-            resourceName={`Cabin ${selectedCabin.name}`}
-            closeModal={() => setSelectedCabin(null)}
-            onDelete={() => deleteCabin(selectedCabin.id)}
-            isPending={isDeleting}
-          />
-        )}
-      </Modal>
     </>
   );
 };
-
-export default CabinTable;
