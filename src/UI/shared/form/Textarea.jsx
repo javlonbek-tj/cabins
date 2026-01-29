@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { FormRow } from './FormRow';
 import { Label } from './Label';
 import { InputError } from './Input';
 
@@ -11,14 +10,20 @@ const StyledTextarea = styled.textarea`
   box-shadow: var(--shadow-sm);
   width: 100%;
   height: 8rem;
+
+  &:disabled {
+    background-color: var(--color-grey-200);
+    cursor: default;
+    opacity: 0.6;
+  }
 `;
 
 export const Textarea = ({ label, id, error, ...props }) => {
   return (
-    <FormRow>
+    <>
       {label && <Label htmlFor={id}>{label}</Label>}
       <StyledTextarea id={id} {...props} />
       {error && <InputError>{error}</InputError>}
-    </FormRow>
+    </>
   );
 };

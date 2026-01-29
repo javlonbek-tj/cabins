@@ -1,2 +1,3 @@
-export * from './cabins';
+export * from './apiCabins';
 export * from './helpers';
+export * from './settings';

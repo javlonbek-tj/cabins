@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { DeleteCabin, EditCabin, useCreateCabin, useDuplicateCabin } from '.';
+import { DeleteCabin, EditCabin, useDuplicateCabin } from '.';
 import { HiPencil, HiTrash } from 'react-icons/hi';
 import { HiSquare2Stack } from 'react-icons/hi2';
 

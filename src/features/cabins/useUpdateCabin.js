@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
-import { updateCabin as updateCabinApi } from '../../services/cabins/apiCabins';
+import { updateCabin as updateCabinApi } from '../../services';
 
 export const useUpdateCabin = (onSuccessCallback) => {
   const queryClient = useQueryClient();

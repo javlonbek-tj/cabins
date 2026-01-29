@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { FormRow } from './FormRow';
 import { Label } from './Label';
 
 const StyledInput = styled.input`
@@ -17,10 +16,10 @@ export const InputError = styled.p`
 
 export const Input = ({ label, id, error, ...props }) => {
   return (
-    <FormRow>
+    <>
       {label && <Label htmlFor={id}>{label}</Label>}
       <StyledInput id={id} {...props} />
       {error && <InputError>{error}</InputError>}
-    </FormRow>
+    </>
   );
 };

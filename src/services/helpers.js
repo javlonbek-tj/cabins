@@ -19,7 +19,7 @@ export const uploadNewImage = async (
     throw new Error('Image could not be uploaded');
   }
 
-  return { imagePath, imageName };
+  return imagePath;
 };
 
 export const copyExistingImage = async (
@@ -41,7 +41,7 @@ export const copyExistingImage = async (
   }
 
   const newImagePath = `${supabaseUrl}/storage/v1/object/public/${imageFolder}/${newImageName}`;
-  return { imagePath: newImagePath, imageName: newImageName };
+  return newImagePath;
 };
 
 export const insertCabin = async (cabinData) => {
@@ -59,7 +59,8 @@ export const insertCabin = async (cabinData) => {
   return data;
 };
 
-export const removeOldImage = async (imageName, imageFolder) => {
+export const removeOldImage = async (image, imageFolder) => {
+  const imageName = image.split('/').pop();
   const { error: removeError } = await supabase.storage
     .from(imageFolder)
     .remove([imageName]);

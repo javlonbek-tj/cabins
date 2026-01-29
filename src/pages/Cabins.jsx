@@ -1,7 +1,7 @@
 import { AddCabin, CabinTable, useCabins } from '../features/cabins';
 import { Heading, Row } from '../UI/shared';
 
-const Cabins = () => {
+export const Cabins = () => {
   const { cabins, error, isPending: isLoadingCabins } = useCabins();
 
   return (
@@ -21,4 +21,3 @@ const Cabins = () => {
     </>
   );
 };
-export default Cabins;

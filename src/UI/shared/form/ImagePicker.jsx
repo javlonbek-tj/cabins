@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Button } from '../button/Button';
-import { FormRow } from './FormRow';
 import { Label } from './Label';
 import { useRef, useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
@@ -48,8 +47,12 @@ const RemoveImgBtn = styled.button.attrs({ type: 'button' })`
   padding: 0.2rem;
   cursor: pointer;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: var(--color-red-800);
+  }
+
+  &:disabled {
+    cursor: default;
   }
 `;
 
@@ -91,12 +94,13 @@ export const ImagePicker = ({
   };
 
   const handleRemoveImage = () => {
+    if (disabled) return;
     setSelectedImage(null);
     imageInput.current.value = '';
     onChange?.(null);
   };
   return (
-    <FormRow>
+    <>
       {label && <Label htmlFor={id}>{label}</Label>}
       <ImageControls>
         <HiddenInput
@@ -115,7 +119,7 @@ export const ImagePicker = ({
 
         {selectedImage && !isLoading && (
           <ImagePreview>
-            <RemoveImgBtn onClick={handleRemoveImage}>
+            <RemoveImgBtn onClick={handleRemoveImage} disabled={disabled}>
               <IoMdClose />
             </RemoveImgBtn>
             <Img src={selectedImage} alt='Selected preview' />
@@ -123,6 +127,6 @@ export const ImagePicker = ({
         )}
       </ImageControls>
       {error && <InputError>{error}</InputError>}
-    </FormRow>
+    </>
   );
 };
