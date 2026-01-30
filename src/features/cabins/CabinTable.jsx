@@ -1,6 +1,7 @@
+import { useSearchParams } from 'react-router';
 import styled from 'styled-components';
 import { CabinRow } from './index';
-import { FullPageSpinner } from '../../UI/shared';
+import { FullPageSpinner, ErrorFallback } from '../../UI/shared';
 
 const Table = styled.div`
   border: 1px solid var(--color-grey-200);
@@ -22,8 +23,39 @@ const TableHead = styled.div`
 `;
 
 export const CabinTable = ({ cabins, isLoadingCabins, error }) => {
+  const [searchParams] = useSearchParams();
+
   if (isLoadingCabins) return <FullPageSpinner />;
-  if (error) return <div>{error.message}</div>;
+
+  if (error)
+    return <ErrorFallback title='Failed to load cabins' error={error} />;
+
+  // 1) FILTER
+  const filterValue = searchParams.get('discount') || 'all';
+
+  let filteredCabins;
+  if (filterValue === 'all') filteredCabins = cabins;
+  if (filterValue === 'no-discount')
+    filteredCabins = cabins.filter((cabin) => cabin.discount === 0);
+  if (filterValue === 'with-discount')
+    filteredCabins = cabins.filter((cabin) => cabin.discount > 0);
+
+  // 2) SORT
+  const sortValue = searchParams.get('sort-by') || 'created_at-asc';
+
+  const [field, direction] = sortValue.split('-');
+  const modifier = direction === 'asc' ? 1 : -1;
+  const sortedCabins = filteredCabins.sort((a, b) => {
+    const aVal = a[field];
+    const bVal = b[field];
+
+    if (typeof aVal === 'string') {
+      return aVal.localeCompare(bVal) * modifier;
+    }
+
+    return (aVal - bVal) * modifier;
+  });
+
   return (
     <>
       <Table role='table'>
@@ -36,7 +68,7 @@ export const CabinTable = ({ cabins, isLoadingCabins, error }) => {
           <div></div>
         </TableHead>
 
-        {cabins.map((cabin) => (
+        {sortedCabins.map((cabin) => (
           <CabinRow key={cabin.id} cabin={cabin} />
         ))}
       </Table>

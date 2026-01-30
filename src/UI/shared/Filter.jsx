@@ -1,0 +1,60 @@
+import { useSearchParams } from 'react-router';
+import styled from 'styled-components';
+
+const StyledFilter = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.4rem;
+  padding: 0.4rem;
+  font-weight: 500;
+  background-color: var(--color-grey-0);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-grey-100);
+`;
+
+const StyledButton = styled.button`
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--border-radius-md);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  background-color: ${({ active }) => active && 'var(--color-brand-600)'};
+  color: ${({ active }) => active && 'var(--color-grey-0)'};
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-brand-600);
+    color: var(--color-grey-0);
+  }
+`;
+
+export const Filter = ({ options, filterField }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const currentFilter = searchParams.get(filterField) ?? options[0].value;
+
+  const handleClick = (e) => {
+    const value = e.target.value;
+    const nextParams = new URLSearchParams(searchParams);
+    nextParams.set(filterField, value);
+
+    setSearchParams(nextParams);
+  };
+
+  return (
+    <StyledFilter>
+      {options.map((option) => (
+        <StyledButton
+          key={option.value}
+          value={option.value}
+          active={currentFilter === option.value}
+          onClick={handleClick}
+        >
+          {option.label}
+        </StyledButton>
+      ))}
+    </StyledFilter>
+  );
+};

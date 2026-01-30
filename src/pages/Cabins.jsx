@@ -1,4 +1,9 @@
-import { AddCabin, CabinTable, useCabins } from '../features/cabins';
+import {
+  AddCabin,
+  CabinTable,
+  CabinTableOperations,
+  useCabins,
+} from '../features/cabins';
 import { Heading, Row } from '../UI/shared';
 
 export const Cabins = () => {
@@ -8,7 +13,7 @@ export const Cabins = () => {
     <>
       <Row>
         <Heading>All Cabins</Heading>
-        <p>Filter/Sort</p>
+        <CabinTableOperations />
       </Row>
       <Row direction='vertical'>
         <CabinTable
@@ -16,7 +21,7 @@ export const Cabins = () => {
           isLoadingCabins={isLoadingCabins}
           error={error}
         />
-        {!isLoadingCabins && <AddCabin />}
+        {!isLoadingCabins && !error && <AddCabin />}
       </Row>
     </>
   );

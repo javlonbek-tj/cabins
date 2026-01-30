@@ -2,6 +2,7 @@ export { AddCabin } from './AddCabin';
 export { CabinForm } from './CabinForm';
 export { CabinRow } from './CabinRow';
 export { CabinTable } from './CabinTable';
+export { CabinTableOperations } from './CabinTableOperations';
 export { DeleteCabin } from './DeleteCabin';
 export { EditCabin } from './EditCabin';
 export { useCabins } from './useCabins';

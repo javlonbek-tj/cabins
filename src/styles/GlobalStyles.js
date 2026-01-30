@@ -98,6 +98,7 @@ const GlobalStyles = createGlobalStyle`
   --z-index-toast: 100;
   --z-index-modal: 95;
   --z-index-overlay: 90;
+  --z-index-select: 85
 
 
 }
@@ -168,6 +169,10 @@ img {
 
 button {
   cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
 }
 `;
 
