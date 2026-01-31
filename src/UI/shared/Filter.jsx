@@ -9,13 +9,13 @@ const StyledFilter = styled.div`
   padding: 0.4rem;
   font-weight: 500;
   background-color: var(--color-grey-0);
-  border-radius: var(--border-radius-md);
+  border-radius: var(--border-radius-sm);
   border: 1px solid var(--color-grey-100);
 `;
 
 const StyledButton = styled.button`
   padding: 0.4rem 0.8rem;
-  border-radius: var(--border-radius-md);
+  border-radius: var(--border-radius-sm);
   background: none;
   border: none;
   cursor: pointer;
