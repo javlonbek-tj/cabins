@@ -1,9 +1,9 @@
 import { useSearchParams } from 'react-router';
 import { Select } from './Select';
 
-export function SortBy({ options, filterField }) {
+export function SortBy({ options, filterField, defaultValue }) {
   const [params, setParams] = useSearchParams();
-  const value = params.get(filterField) || '';
+  const value = params.get(filterField) || defaultValue;
 
   function handleChange(val) {
     const nextParams = new URLSearchParams(params);

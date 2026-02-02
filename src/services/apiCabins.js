@@ -4,7 +4,7 @@ import {
   insertCabin,
   removeOldImage,
   uploadNewImage,
-} from './helpers';
+} from './apiHelpers';
 import { supabase } from './supabase';
 
 export const getCabins = async () => {

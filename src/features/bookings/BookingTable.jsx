@@ -1,4 +1,9 @@
-import { ErrorFallback, FullPageSpinner, Table } from '../../UI/shared';
+import {
+  ErrorFallback,
+  FullPageSpinner,
+  Pagination,
+  Table,
+} from '../../UI/shared';
 import { BookingRow, useBookings } from './';
 
 export const BookingTable = () => {
@@ -6,13 +11,14 @@ export const BookingTable = () => {
 
   if (isPending) return <FullPageSpinner />;
 
-  if (error) return <ErrorFallback title="Failed to load bookings" />;
+  if (error) return <ErrorFallback title='Failed to load bookings' />;
   return (
     <>
       <Table
-        role="table"
+        role='table'
         items={bookings}
         render={(booking) => <BookingRow key={booking.id} booking={booking} />}
+        footer={<Pagination />}
       >
         <div>Cabin</div>
         <div>Guest</div>

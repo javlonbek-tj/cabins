@@ -30,10 +30,10 @@ const StyledButton = styled.button`
   }
 `;
 
-export const Filter = ({ options, filterField }) => {
+export const Filter = ({ options, filterField, defaultValue }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const currentFilter = searchParams.get(filterField) ?? options[0].value;
+  const currentFilter = searchParams.get(filterField) ?? defaultValue;
 
   const handleClick = (e) => {
     const value = e.target.value;
@@ -51,6 +51,7 @@ export const Filter = ({ options, filterField }) => {
           value={option.value}
           active={currentFilter === option.value}
           onClick={handleClick}
+          disabled={option.value === currentFilter}
         >
           {option.label}
         </StyledButton>

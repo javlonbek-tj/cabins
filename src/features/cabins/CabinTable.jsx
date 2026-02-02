@@ -8,7 +8,7 @@ export const CabinTable = ({ cabins, isLoadingCabins, error }) => {
   if (isLoadingCabins) return <FullPageSpinner />;
 
   if (error)
-    return <ErrorFallback title="Failed to load cabins" error={error} />;
+    return <ErrorFallback title='Failed to load cabins' error={error} />;
 
   // 1) FILTER
   const filterValue = searchParams.get('discount') || 'all';
@@ -21,7 +21,7 @@ export const CabinTable = ({ cabins, isLoadingCabins, error }) => {
     filteredCabins = cabins.filter((cabin) => cabin.discount > 0);
 
   // 2) SORT
-  const sortValue = searchParams.get('sort-by') || 'created_at-asc';
+  const sortValue = searchParams.get('sort-by') || 'created_at-desc';
 
   const [field, direction] = sortValue.split('-');
   const modifier = direction === 'asc' ? 1 : -1;

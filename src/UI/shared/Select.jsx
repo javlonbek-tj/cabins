@@ -86,9 +86,12 @@ const DropdownList = styled.ul`
 const DropdownItem = styled.li`
   padding: 0.8rem;
   font-size: 1.4rem;
-  cursor: pointer;
   border-radius: var(--border-radius-sm);
   white-space: nowrap;
+
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+  pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
 
   background-color: ${({ isSelected }) =>
     isSelected ? 'var(--color-brand-100)' : 'transparent'};
@@ -179,6 +182,7 @@ export function Select({
                 key={opt.value}
                 isSelected={opt.value === value}
                 onClick={() => handleSelect(opt.value)}
+                disabled={opt.value === value}
               >
                 {opt.label}
               </DropdownItem>

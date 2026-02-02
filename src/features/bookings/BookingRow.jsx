@@ -2,7 +2,7 @@ import { HiPencil, HiTrash } from 'react-icons/hi';
 import { HiSquare2Stack } from 'react-icons/hi2';
 import { ActionButtons, TableRow, Tag } from '../../UI/shared';
 import styled from 'styled-components';
-import { formatCurrency, formatDistanceFromNow } from '../../utils/helpers';
+import { formatCurrency, formatDistanceFromNow } from '../../utils';
 import { format, isToday } from 'date-fns';
 
 const Cabin = styled.div`
@@ -40,7 +40,7 @@ const statusToTagName = {
 
 export const BookingRow = ({ booking }) => {
   return (
-    <TableRow>
+    <TableRow role='row'>
       <Cabin>{booking.cabins.name}</Cabin>
       <Stacked>
         <span>{booking.guests.fullName}</span>
