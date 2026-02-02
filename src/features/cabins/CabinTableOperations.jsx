@@ -18,8 +18,8 @@ export const CabinTableOperations = () => {
 
   return (
     <TableOperations>
-      <Filter options={filterOptions} filterField='discount' />
-      <SortBy options={sortOptions} filterField='sort-by' />
+      <Filter options={filterOptions} filterField="discount" />
+      <SortBy options={sortOptions} filterField="sort-by" />
     </TableOperations>
   );
 };

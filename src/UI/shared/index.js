@@ -1,4 +1,5 @@
 export * from './form';
+export * from './table';
 export * from './button';
 export * from './Spinner';
 export * from './Row';
@@ -11,4 +12,5 @@ export { Row } from './Row';
 export { Select } from './Select';
 export { SortBy } from './SortBy';
 export { Spinner } from './Spinner';
-export { TableOperations } from './TableOperations';
+export { Tag } from './Tag';
+export { TableOperations } from './table/TableOperations';

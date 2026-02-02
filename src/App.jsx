@@ -1,9 +1,10 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
-import GlobalStyles from './styles/GlobalStyles';
-import AppLayout from './UI/AppLayout';
-import { Cabins, Dashboard, Settings } from './pages';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
+
+import GlobalStyles from './styles/GlobalStyles';
+import AppLayout from './UI/AppLayout';
+import { Bookings, Cabins, Dashboard, Settings } from './pages';
 
 const queryClient = new QueryClient();
 
@@ -14,15 +15,16 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to='dashboard' />} />
-            <Route path='dashboard' element={<Dashboard />} />
-            <Route path='cabins' element={<Cabins />} />
-            <Route path='settings' element={<Settings />} />
+            <Route index element={<Navigate replace to="dashboard" />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="cabins" element={<Cabins />} />
+            <Route path="bookings" element={<Bookings />} />
+            <Route path="settings" element={<Settings />} />
           </Route>
         </Routes>
       </BrowserRouter>
       <Toaster
-        position='top-center'
+        position="top-center"
         gutter={8}
         containerStyle={{
           zIndex: 'var(--z-index-toast)',
