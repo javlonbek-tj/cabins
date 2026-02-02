@@ -5,6 +5,7 @@ import { Toaster } from 'react-hot-toast';
 import GlobalStyles from './styles/GlobalStyles';
 import AppLayout from './UI/AppLayout';
 import { Bookings, Cabins, Dashboard, Settings } from './pages';
+import { BookingDetails } from './features/bookings';
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ function App() {
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="cabins" element={<Cabins />} />
             <Route path="bookings" element={<Bookings />} />
+            <Route path="bookings/:bookingId" element={<BookingDetails />} />
             <Route path="settings" element={<Settings />} />
           </Route>
         </Routes>

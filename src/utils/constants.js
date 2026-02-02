@@ -28,3 +28,13 @@ export const cabinSortOptions = [
   { value: 'maxCapacity-asc', label: 'Sort by capacity (low first)' },
   { value: 'maxCapacity-desc', label: 'Sort by capacity (high first)' },
 ];
+
+// PAGE SIZE
+export const PAGE_SIZE = 10;
+
+// STATUS TAG
+export const statusToTagName = {
+  unconfirmed: 'blue',
+  'checked-in': 'green',
+  'checked-out': 'silver',
+};

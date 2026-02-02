@@ -39,6 +39,7 @@ export const Filter = ({ options, filterField, defaultValue }) => {
     const value = e.target.value;
     const nextParams = new URLSearchParams(searchParams);
     nextParams.set(filterField, value);
+    nextParams.set('page', 1);
 
     setSearchParams(nextParams);
   };

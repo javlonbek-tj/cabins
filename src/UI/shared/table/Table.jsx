@@ -41,11 +41,11 @@ export const TableFooter = styled.footer`
 export const Table = ({ children, footer, items, render }) => {
   return (
     <>
-      <StyledTable role='table'>
-        <TableHead role='header'>{children}</TableHead>
+      <StyledTable role="table">
+        <TableHead role="header">{children}</TableHead>
 
         {items.map(render)}
-        {footer && <TableFooter role='footer'>{footer}</TableFooter>}
+        {footer && <TableFooter role="footer">{footer}</TableFooter>}
       </StyledTable>
     </>
   );
