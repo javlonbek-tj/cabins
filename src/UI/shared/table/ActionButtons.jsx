@@ -12,10 +12,13 @@ export const ActionButtons = styled.div`
     color: var(--color-grey-500);
   }
 
-  &:disabled {
-    svg {
-      opacity: 0.6;
-      cursor: default;
-    }
-  }
+  ${({ $disabled }) =>
+    $disabled &&
+    `
+      pointer-events: none;
+      svg {
+        opacity: 0.6;
+        cursor: default;
+      }
+    `}
 `;

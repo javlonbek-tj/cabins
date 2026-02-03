@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { HiOutlineUser } from 'react-icons/hi';
-import { MdOutlineDarkMode } from 'react-icons/md';
 import { ButtonIcon } from '../shared';
+import { HiOutlineMoon, HiOutlineUser } from 'react-icons/hi2';
 
 const StyledHeaderMenu = styled.ul`
   display: flex;
@@ -19,7 +18,7 @@ const HeaderMenu = () => {
       </li>
       <li>
         <ButtonIcon>
-          <MdOutlineDarkMode />
+          <HiOutlineMoon />
         </ButtonIcon>
       </li>
     </StyledHeaderMenu>

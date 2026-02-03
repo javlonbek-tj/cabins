@@ -46,8 +46,8 @@ export const UpdateSettingsForm = () => {
         Change a value and click outside the input to save automatically
       </Description>
 
-      <Form maxWidth='60rem'>
-        <FormRow columns='20rem 1fr'>
+      <Form $maxWidth='60rem'>
+        <FormRow $columns='20rem 1fr'>
           <Input
             type='number'
             label='Minimum nights/booking'
@@ -57,7 +57,7 @@ export const UpdateSettingsForm = () => {
             onBlur={handleUpdate}
           />
         </FormRow>
-        <FormRow columns='20rem 1fr'>
+        <FormRow $columns='20rem 1fr'>
           <Input
             type='number'
             label='Maximum nights/booking'
@@ -67,7 +67,7 @@ export const UpdateSettingsForm = () => {
             onBlur={handleUpdate}
           />
         </FormRow>
-        <FormRow columns='20rem 1fr'>
+        <FormRow $columns='20rem 1fr'>
           <Input
             type='number'
             label='Maximum guests/booking'
@@ -77,7 +77,7 @@ export const UpdateSettingsForm = () => {
             onBlur={handleUpdate}
           />
         </FormRow>
-        <FormRow columns='20rem 1fr'>
+        <FormRow $columns='20rem 1fr'>
           <Input
             type='number'
             label='Breakfast price'

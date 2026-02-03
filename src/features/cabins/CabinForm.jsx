@@ -24,7 +24,7 @@ export const CabinForm = ({
   const { errors } = formState;
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)} type='modal'>
+    <Form onSubmit={handleSubmit(onSubmit)} $type='modal'>
       <Heading as='h2'>{ModalTitle}</Heading>
       <FormRow>
         <Input
@@ -127,7 +127,7 @@ export const CabinForm = ({
       </FormRow>
       <ButtonGroup>
         <Button
-          variation='secondary'
+          $variation='secondary'
           type='button'
           onClick={() => closeModal()}
         >

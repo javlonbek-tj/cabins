@@ -38,11 +38,11 @@ export const ConfirmDelete = ({
         This action cannot be undone.
       </p>
       <ButtonGroup>
-        <Button variation='secondary' onClick={closeModal} disabled={isPending}>
+        <Button $variation='secondary' onClick={closeModal} disabled={isPending}>
           Cancel
         </Button>
         <DeleteButton
-          variation='danger'
+          $variation='danger'
           disabled={isPending}
           onClick={onDelete}
         >

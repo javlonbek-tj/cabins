@@ -49,7 +49,7 @@ const StyledLink = styled(Link)`
 
 export const BookingRow = ({ booking }) => {
   return (
-    <TableRow role="row">
+    <TableRow role='row'>
       <Cabin>{booking.cabins.name}</Cabin>
       <Stacked>
         <span>{booking.guests.fullName}</span>
@@ -67,7 +67,7 @@ export const BookingRow = ({ booking }) => {
           {format(new Date(booking.endDate), 'MMM dd yyyy')}
         </span>
       </Stacked>
-      <Tag type={statusToTagName[booking.status]}>{booking.status}</Tag>
+      <Tag $type={statusToTagName[booking.status]}>{booking.status}</Tag>
       <Amount>{formatCurrency(booking.totalPrice)}</Amount>
       <ActionButtons>
         <StyledLink to={`/bookings/${booking.id}`}>

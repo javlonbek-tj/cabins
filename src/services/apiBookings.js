@@ -9,7 +9,7 @@ export const getBookings = async ({ queryKey }) => {
     .from('bookings')
     .select(
       'id, created_at, startDate, endDate, numNights, numGuests, status, totalPrice, cabins(name), guests:guestId(fullName, email)',
-      { count: 'exact' }
+      { count: 'exact' },
     );
 
   // FILTER
@@ -56,4 +56,19 @@ export const getBooking = async ({ queryKey }) => {
   }
 
   return booking;
+};
+
+export const updateBooking = async (id, obj) => {
+  const { data, error } = await supabase
+    .from('bookings')
+    .update(obj)
+    .eq('id', id)
+    .select()
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error('Booking could not be updated');
+  }
+  return data;
 };

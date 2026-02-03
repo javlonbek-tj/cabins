@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const useKey = (key, callback, enabled = true) => {
+export const useKey = (key, callback, enabled = true) => {
   useEffect(() => {
     if (!enabled) return;
 
@@ -17,5 +17,3 @@ const useKey = (key, callback, enabled = true) => {
     };
   }, [key, callback, enabled]);
 };
-
-export default useKey;

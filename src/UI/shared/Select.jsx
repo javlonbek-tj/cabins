@@ -4,10 +4,10 @@ import { HiChevronDown, HiXMark } from 'react-icons/hi2';
 
 const SelectWrapper = styled.div`
   position: relative;
-  width: ${({ width }) => width};
+  width: ${({ $width }) => $width};
 `;
 
-const SelectButton = styled.button`
+const SelectElement = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -65,7 +65,7 @@ const ChevronIcon = styled(HiChevronDown)`
   width: 1.6rem;
   height: 1.6rem;
   transition: all 0.2s;
-  transform: ${({ isOpen }) => (isOpen ? 'rotate(180deg)' : 'rotate(0)')};
+  transform: ${({ $isOpen }) => ($isOpen ? 'rotate(180deg)' : 'rotate(0)')};
 `;
 
 const DropdownList = styled.ul`
@@ -89,12 +89,12 @@ const DropdownItem = styled.li`
   border-radius: var(--border-radius-sm);
   white-space: nowrap;
 
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
-  pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
+  cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'pointer')};
+  opacity: ${({ $disabled }) => ($disabled ? 0.5 : 1)};
+  pointer-events: ${({ $disabled }) => ($disabled ? 'none' : 'auto')};
 
-  background-color: ${({ isSelected }) =>
-    isSelected ? 'var(--color-brand-100)' : 'transparent'};
+  background-color: ${({ $isSelected }) =>
+    $isSelected ? 'var(--color-brand-100)' : 'transparent'};
 
   &:hover {
     background-color: var(--color-brand-600);
@@ -157,32 +157,32 @@ export function Select({
   return (
     <>
       <MeasureText ref={measureRef} />
-      <SelectWrapper ref={selectRef} width={minWidth}>
-        <SelectButton onClick={() => setIsOpen((o) => !o)}>
+      <SelectWrapper ref={selectRef} $width={minWidth}>
+        <SelectElement onClick={() => setIsOpen((o) => !o)}>
           <span>{selectedOption?.label || placeholder}</span>
 
           <IconWrapper>
             {value ? (
               <>
-                <ChevronIcon className='chevron' isOpen={isOpen} />
+                <ChevronIcon className='chevron' $isOpen={isOpen} />
                 <ClearButton className='clear' onClick={handleClear}>
                   <HiXMark />
                 </ClearButton>
               </>
             ) : (
-              <ChevronIcon isOpen={isOpen} />
+              <ChevronIcon $isOpen={isOpen} />
             )}
           </IconWrapper>
-        </SelectButton>
+        </SelectElement>
 
         {isOpen && (
           <DropdownList>
             {options.map((opt) => (
               <DropdownItem
                 key={opt.value}
-                isSelected={opt.value === value}
+                $isSelected={opt.value === value}
                 onClick={() => handleSelect(opt.value)}
-                disabled={opt.value === value}
+                $disabled={opt.value === value}
               >
                 {opt.label}
               </DropdownItem>

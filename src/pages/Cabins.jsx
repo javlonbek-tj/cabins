@@ -15,7 +15,7 @@ export const Cabins = () => {
         <Heading>All Cabins</Heading>
         <CabinTableOperations />
       </Row>
-      <Row direction='vertical'>
+      <Row $direction='vertical'>
         <CabinTable
           cabins={cabins}
           isLoadingCabins={isLoadingCabins}

@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { HiSquare2Stack } from 'react-icons/hi2';
+import { HiPencil, HiSquare2Stack, HiTrash } from 'react-icons/hi2';
 
 import { DeleteCabin, EditCabin, useDuplicateCabin } from '.';
-import { HiPencil, HiTrash } from 'react-icons/hi';
 import { TableRow, ActionButtons } from '../../UI/shared';
 import { formatCurrency } from '../../utils';
 
@@ -54,7 +53,7 @@ export const CabinRow = ({ cabin }) => {
         ) : (
           <span>&mdash;</span>
         )}
-        <ActionButtons disabled={isPending}>
+        <ActionButtons $disabled={isPending}>
           <HiSquare2Stack onClick={() => handleDuplicate(cabin)} />
           <HiPencil onClick={() => setCabinToEdit(cabin)} />
           <HiTrash onClick={() => setCabinToDelete(cabin)} />

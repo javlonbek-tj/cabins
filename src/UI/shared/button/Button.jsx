@@ -54,8 +54,8 @@ export const Button = styled.button`
   box-shadow: var(--shadow-sm);
   transition: background-color 0.3s;
 
-  ${({ size = 'medium' }) => sizes[size]}
-  ${({ variation = 'primary' }) => variations[variation]}
+  ${({ $size = 'medium' }) => sizes[$size]}
+  ${({ $variation = 'primary' }) => variations[$variation]}
 
   &:disabled {
     opacity: 0.6;

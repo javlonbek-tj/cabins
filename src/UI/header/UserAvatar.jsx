@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 const StyledUserAvatar = styled.div`
@@ -15,7 +14,7 @@ const StyledUserAvatar = styled.div`
 const UserAvatar = () => {
   return (
     <StyledUserAvatar>
-      <img src="default-user.jpg" alt="User Avatar" />
+      <img src='/default-user.jpg' alt='User' />
       <p>Admin</p>
     </StyledUserAvatar>
   );

@@ -1,8 +1,8 @@
 import { createPortal } from 'react-dom';
 import { useEffect, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
-import { IoMdClose } from 'react-icons/io';
-import useKey from '../../hooks/useKey';
+import { HiXMark } from 'react-icons/hi2';
+import { useKey } from '../../hooks';
 import { ButtonIcon } from './button';
 
 const fadeIn = keyframes`
@@ -89,7 +89,7 @@ export const Modal = ({ open, children, closeModal }) => {
 
       <StyledDialog ref={dialog} onClose={closeModal}>
         <CloseButton onClick={closeModal}>
-          <IoMdClose />
+          <HiXMark />
         </CloseButton>
         {children}
       </StyledDialog>

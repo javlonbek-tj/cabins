@@ -21,8 +21,8 @@ const StyledButton = styled.button`
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
-  background-color: ${({ active }) => active && 'var(--color-brand-600)'};
-  color: ${({ active }) => active && 'var(--color-grey-0)'};
+  background-color: ${({ $active }) => $active && 'var(--color-brand-600)'};
+  color: ${({ $active }) => $active && 'var(--color-grey-0)'};
 
   &:hover:not(:disabled) {
     background-color: var(--color-brand-600);
@@ -50,7 +50,7 @@ export const Filter = ({ options, filterField, defaultValue }) => {
         <StyledButton
           key={option.value}
           value={option.value}
-          active={currentFilter === option.value}
+          $active={currentFilter === option.value}
           onClick={handleClick}
           disabled={option.value === currentFilter}
         >

@@ -11,7 +11,7 @@ export const AddCabin = () => {
 
   return (
     <div>
-      <Button size='large' onClick={() => setOpen(true)}>
+      <Button $size='large' onClick={() => setOpen(true)}>
         Add Cabin
       </Button>
 

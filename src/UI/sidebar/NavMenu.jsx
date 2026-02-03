@@ -1,4 +1,4 @@
-import { HiOutlineHome, HiOutlineUsers } from 'react-icons/hi';
+import { HiOutlineHome, HiOutlineUsers } from 'react-icons/hi2';
 import {
   HiOutlineCalendarDays,
   HiOutlineCog6Tooth,

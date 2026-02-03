@@ -4,7 +4,7 @@ import { Toaster } from 'react-hot-toast';
 
 import GlobalStyles from './styles/GlobalStyles';
 import AppLayout from './UI/AppLayout';
-import { Bookings, Cabins, Dashboard, Settings } from './pages';
+import { Bookings, Cabins, Checkin, Dashboard, Settings } from './pages';
 import { BookingDetails } from './features/bookings';
 
 const queryClient = new QueryClient();
@@ -16,17 +16,18 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to="dashboard" />} />
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="cabins" element={<Cabins />} />
-            <Route path="bookings" element={<Bookings />} />
-            <Route path="bookings/:bookingId" element={<BookingDetails />} />
-            <Route path="settings" element={<Settings />} />
+            <Route index element={<Navigate replace to='dashboard' />} />
+            <Route path='dashboard' element={<Dashboard />} />
+            <Route path='cabins' element={<Cabins />} />
+            <Route path='bookings' element={<Bookings />} />
+            <Route path='bookings/:bookingId' element={<BookingDetails />} />
+            <Route path='checkin/:bookingId' element={<Checkin />} />
+            <Route path='settings' element={<Settings />} />
           </Route>
         </Routes>
       </BrowserRouter>
       <Toaster
-        position="top-center"
+        position='top-center'
         gutter={8}
         containerStyle={{
           zIndex: 'var(--z-index-toast)',

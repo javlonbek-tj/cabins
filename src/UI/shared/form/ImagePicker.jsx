@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { Button } from '../button/Button';
 import { Label } from './Label';
 import { useRef, useState } from 'react';
-import { IoMdClose } from 'react-icons/io';
 import { Spinner } from '../Spinner';
 import { InputError } from './Input';
+import { HiXMark } from 'react-icons/hi2';
 
 const ImageControls = styled.div`
   display: flex;
@@ -120,7 +120,7 @@ export const ImagePicker = ({
         {selectedImage && !isLoading && (
           <ImagePreview>
             <RemoveImgBtn onClick={handleRemoveImage} disabled={disabled}>
-              <IoMdClose />
+              <HiXMark />
             </RemoveImgBtn>
             <Img src={selectedImage} alt='Selected preview' />
           </ImagePreview>
